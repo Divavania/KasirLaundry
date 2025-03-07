@@ -8,34 +8,88 @@
 </head>
 <body>
 
-<div class="container mt-4">
-    <h1 class="mb-3">Kasir Laundry</h1>
-    
-    <a href="daftar_pelanggan.php" class="btn btn-primary">Daftar Pelanggan</a>
-    <a href="daftar_layanan.php" class="btn btn-primary">Daftar Layanan</a>
+<style>
+    body {
+        background:rgb(196, 202, 209);
+    }
+    .navbar {
+        background: linear-gradient(to bottom, #9250F1 59%, #FF80FF);
+        padding: 15px;
+        color: white;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .navbar .nav-links {
+        display: flex;
+    }
 
-    <hr>
-    
-    <h3>Tambah Pesanan</h3>
-    <form action="tambah_pesanan.php" method="POST">
-        <div class="mb-3">
-            <label for="pelanggan" class="form-label">Nama Pelanggan:</label>
-            <select name="pelanggan_id" class="form-control" required>
-                <option value="">Pilih Pelanggan</option>
-            </select>
+    .navbar .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .navbar .nav-links a:hover {
+        text-decoration: underline;
+    }
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px auto;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #ccc;
+    }
+    .header-container h3 {
+        margin: 0;
+        align-items: center;
+    }
+    .header-container .btn-custom {
+        margin-left: 15px;
+        background-color: #9250F1;
+        color: white;
+    }
+    .table thead th{
+        background-color: #9250F1;
+        color: white;
+    }
+    </style>
+</head>
+<body>
+
+<nav class="navbar" >
+        <span>KASIR LAUNDRY</span>
+    <div class="nav-links">
+        <a href="index.php">Beranda</a>
+        <a href="daftar_pelanggan.php">Daftar Pelanggan</a>
+        <a href="daftar_layanan.php">Daftar Layanan</a>
+    </div>
+</nav>
+
+<div class="container">
+<div class="header-container">
+    <h3>Selamat Datang | Beranda</h3>
+    <a href="tambah_pesanan.php" class="btn btn-custom">+ Order Baru</a>
+</div>
+<div class="dashboard-container">
+    <div class="row justify-content-center ">
+        <div class="col-md-3">
+            <div class="p-3 bg-light rounded shadow-sm">
+                <h5>Total Order</h5>
+                <p><strong>0</strong></p>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="layanan" class="form-label">Layanan:</label>
-            <select name="layanan_id" class="form-control" required>
-                <option value="">Pilih Layanan</option>
-            </select>
+        <div class="col-md-3">
+            <div class="p-3 bg-light rounded shadow-sm">
+                <h5>Status Selesai</h5>
+                <p><strong>0</strong></p>
+            </div>
         </div>
-        <div class="mb-3">
-            <label>Berat (kg):</label>
-            <input type="number" name="berat" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-success">Simpan Pesanan</button>
-    </form>
+    </div>
 
     <hr>
 
