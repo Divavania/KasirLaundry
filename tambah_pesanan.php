@@ -9,30 +9,18 @@
 
     <style>
         body {
-            background-color: #f3edf9;
-            font-family: 'Poppins', sans-serif;
+            background-color:rgb(196, 202, 209);
         }
 
         .navbar {
-            background: linear-gradient(to right, #7B1FA2, #AE52D4);
-            padding: 15px;
-            color: white;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        background:  #9250F1 ;
+        padding: 15px;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .navbar .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .navbar .nav-links a:hover {
+        .navbar-nav .nav-link:hover {
             text-decoration: underline;
         }
 
@@ -101,14 +89,19 @@
 </head>
 <body>
 
-    <nav class="navbar">
-        <span>KASIR LAUNDRY</span>
-        <div class="nav-links">
-            <a href="index.php">Beranda</a>
-            <a href="daftar_pelanggan.php">Daftar Pelanggan</a>
-            <a href="daftar_layanan.php">Daftar Layanan</a>
+<nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand text-white">KASIR LAUNDRY</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link text-white" href="index.php">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="daftar_pelanggan.php">Daftar Pelanggan</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="daftar_layanan.php">Daftar Layanan</a></li>
+            </ul>
         </div>
-    </nav>
+</nav>
 
     <div class="container mt-4">
         <h3>Tambah Pesanan</h3>
@@ -135,6 +128,6 @@
             <a href="index.php" class="btn-secondary">🏠 Kembali ke Beranda</a>
         </form>
     </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

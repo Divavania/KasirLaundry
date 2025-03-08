@@ -13,30 +13,18 @@
         background:rgb(196, 202, 209);
     }
     .navbar {
-        background: linear-gradient(to bottom, #9250F1 59%, #FF80FF);
+        background:  #9250F1 ;
         padding: 15px;
         color: white;
         font-weight: bold;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
-    .navbar .nav-links {
-        display: flex;
-    }
 
-    .navbar .nav-links a {
-        color: white;
-        text-decoration: none;
-        margin: 0 15px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
+    .navbar-nav .nav-link:hover {
+            text-decoration: underline;
+        }
 
-    .navbar .nav-links a:hover {
-        text-decoration: underline;
-    }
+    
     .header-container {
         display: flex;
         justify-content: space-between;
@@ -53,6 +41,9 @@
         background-color: #9250F1;
         color: white;
     }
+    .table-container {
+        overflow-x: auto;
+    }
     .table thead th{
         background-color: #9250F1;
         color: white;
@@ -61,13 +52,18 @@
 </head>
 <body>
 
-<nav class="navbar" >
-        <span>KASIR LAUNDRY</span>
-    <div class="nav-links">
-        <a href="index.php">Beranda</a>
-        <a href="daftar_pelanggan.php">Daftar Pelanggan</a>
-        <a href="daftar_layanan.php">Daftar Layanan</a>
-    </div>
+<nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand text-white">KASIR LAUNDRY</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link text-white" href="index.php">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="daftar_pelanggan.php">Daftar Pelanggan</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="daftar_layanan.php">Daftar Layanan</a></li>
+            </ul>
+        </div>
 </nav>
 
 <div class="container">
@@ -76,7 +72,7 @@
     <a href="tambah_pesanan.php" class="btn btn-custom">+ Order Baru</a>
 </div>
 <div class="dashboard-container">
-    <div class="row justify-content-center ">
+    <div class="row justify-content-center g-3">
         <div class="col-md-3">
             <div class="p-3 bg-light rounded shadow-sm">
                 <h5>Total Order</h5>
@@ -94,6 +90,7 @@
     <hr>
 
     <h3>Daftar Pesanan</h3>
+    <div class="table-container">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -167,5 +164,6 @@
     </table>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
