@@ -125,19 +125,5 @@
 
 </div>
 
-<script>
-    function printDetail() {
-        var printContent = document.getElementById("detailPesanan").innerHTML;
-        var newWindow = window.open('', '', 'width=200,height=600');
-        newWindow.document.write('<html><head><title>Print Struk</title>');
-        newWindow.document.write('<style>@media print { body { font-size: 12px; font-family: "Courier New", monospace; text-align: center; } .print-container { width: 58mm; padding: 5px; border: 1px dashed black; text-align: left; } h2 { text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 5px; } table { width: 100%; border-collapse: collapse; } th, td { padding: 3px; font-size: 12px; } .footer { text-align: center; margin-top: 10px; font-size: 12px; border-top: 1px dashed black; padding-top: 5px; } }</style>');
-        newWindow.document.write('</head><body>');
-        newWindow.document.write('<div class="print-container">' + printContent + '</div>');
-        newWindow.document.write('</body></html>');
-        newWindow.document.close();
-        newWindow.print();
-    }
-</script>
-
 </body>
 </html>
