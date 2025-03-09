@@ -64,6 +64,22 @@
             background: #5a32a3;
         }
 
+        .btn-back {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: #dc3545;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            background: #c82333;
+        }
+
         .table {
             margin-top: 20px;
             background: white;
@@ -105,6 +121,10 @@
             </ul>
         </div>
 </nav>
+
+<div class="container mt-4">
+    <!-- Tombol kembali ke index -->
+    <a href="index.php" class="btn-back">← Kembali ke Halaman Utama</a>
 
     <div class="container mt-4">
         <h3>Tambah Layanan</h3>
