@@ -120,7 +120,7 @@
     </div>
 
     <div class="text-center mt-3">
-        <button onclick="printDetail()" class="btn btn-primary">Print Struk</button>
+        <button onclick="" class="btn btn-primary">🖨 Print Struk</button>
     </div>
 
 </div>
