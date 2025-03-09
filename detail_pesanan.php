@@ -8,40 +8,40 @@
     
     <style>
         body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
+            background-color: #f3edf9;
+            font-family: 'Poppins', sans-serif;
         }
 
         .container {
-            max-width: 600px;
+            max-width: 550px;
             margin: 40px auto;
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(111, 66, 193, 0.2);
         }
 
         h1 {
             text-align: center;
-            color: #007bff;
-            font-size: 24px;
+            color: #6f42c1;
+            font-size: 22px;
             font-weight: bold;
         }
 
         .print-container {
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: 8px;
             background: #fff;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 2px 4px rgba(111, 66, 193, 0.15);
+            border: 1px solid #ddd;
         }
 
         h2 {
             text-align: center;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
+            color: #5a32a3;
+            margin-bottom: 15px;
         }
 
         table {
@@ -51,43 +51,46 @@
         }
 
         th, td {
-            padding: 8px;
+            padding: 10px;
             border-bottom: 1px solid #ddd;
             font-size: 14px;
         }
 
         th {
             text-align: left;
-            background: #007bff;
+            background: #6f42c1;
             color: white;
             border-radius: 5px;
         }
 
         td {
-            background: #f9f9f9;
+            background: #f9f6fd;
+            color: #333;
         }
 
         .footer {
             text-align: center;
             margin-top: 15px;
-            font-size: 13px;
-            color: #555;
-            border-top: 1px dashed black;
+            font-size: 12px;
+            color: #6f42c1;
+            border-top: 1px dashed #6f42c1;
             padding-top: 8px;
         }
 
         .btn-primary {
             display: block;
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border-radius: 25px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
+            background-color: #6f42c1;
+            border: none;
             transition: 0.3s;
         }
 
         .btn-primary:hover {
-            background: #0056b3;
+            background: #5a32a3;
         }
     </style>
 </head>
