@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pelanggan</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -107,7 +109,10 @@
 <body>
 
 <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand text-white">KASIR LAUNDRY</a>
+<a class="navbar-brand text-white" href="index.php">
+        <img src="kasir.png" alt="Logo Laundry" width="50" height="50" class="me-2">
+        KASIR LAUNDRY
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>

@@ -90,7 +90,10 @@
 <body>
 
 <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand text-white">KASIR LAUNDRY</a>
+<a class="navbar-brand text-white" href="index.php">
+        <img src="kasir.png" alt="Logo Laundry" width="50" height="50" class="me-2">
+        KASIR LAUNDRY
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
