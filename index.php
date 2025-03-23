@@ -5,7 +5,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // kredensial (Ganti dengan autentikasi dari database)
     $users = [
         'admin' => ['password' => 'admin123', 'role' => 'admin'],
         'superadmin' => ['password' => 'super123', 'role' => 'superadmin'],
@@ -30,21 +29,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
     <h2>Form Login</h2>
-    <?php if (!empty($error)) echo "<p style='color: red;'>$error</p>"; ?>
+    <?php if (!empty($error)): ?>
+        <p><?php echo htmlspecialchars($error); ?></p>
+    <?php endif; ?>
 
     <form method="POST" action="">
-        <label>Username:</label>
-        <input type="text" name="username" required><br>
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required><br><br>
 
-        <label>Password:</label>
-        <input type="password" name="password" required><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br><br>
 
         <button type="submit">Login</button>
     </form>
 </body>
+
 </html>
