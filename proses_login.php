@@ -3,25 +3,43 @@ session_start();
 require 'includes/koneksi.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = md5($_POST['password']);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $result = mysqli_query($conn, $query);
+    // Gunakan prepared statement untuk keamanan
+    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if (mysqli_num_rows($result) == 1) {
-        $user = mysqli_fetch_assoc($result);
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['role'] = $user['role'];
+    if ($result->num_rows == 1) {
+        $user = $result->fetch_assoc();
 
-        if ($user['role'] == 'superadmin') {
-            header("Location: superadmin/dashboard.php");
-        } elseif ($user['role'] == 'admin') {
-            header("Location: admin/dashboard.php");
+        // Validasi password & status aktif
+        if (password_verify($password, $user['password'])) {
+            if ($user['status'] == 'aktif') {
+                // Simpan sesi login
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['role'] = $user['role'];
+
+                // Arahkan ke dashboard berdasarkan role
+                if ($user['role'] == 'superadmin') {
+                    header("Location: superadmin/dashboard.php");
+                } elseif ($user['role'] == 'admin') {
+                    header("Location: admin/dashboard.php");
+                }
+                exit();
+            } else {
+                echo "Akun Anda tidak aktif. Hubungi superadmin!";
+            }
+        } else {
+            echo "Password salah. Periksa kembali!";
         }
-        exit();
     } else {
-        echo "Login gagal. Periksa kembali username dan password!";
+        echo "Username tidak ditemukan!";
     }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>

@@ -13,6 +13,7 @@ $role = $_SESSION['role'] ?? '';
         <a href="../superadmin/dashboard.php">Dashboard</a> |
         <a href="../superadmin/daftar_pelanggan.php">Kelola Pelanggan</a> |
         <a href="../superadmin/daftar_layanan.php">Kelola Layanan</a> |
+        <a href="../superadmin/manajemen_admin.php">Kelola Admin</a> |
     <?php elseif ($role === 'admin') : ?>
         <a href="../admin/dashboard.php">Dashboard</a> |
         <a href="../admin/daftar_pelanggan.php">Kelola Pelanggan</a> |

@@ -1,28 +1,46 @@
 <?php
 session_start();
 
+// Data user (contoh simulasi dari database)
+$users = [
+    'admin' => ['password' => password_hash('admin123', PASSWORD_DEFAULT), 'role' => 'admin', 'status' => 'aktif'],
+    'superadmin' => ['password' => password_hash('super123', PASSWORD_DEFAULT), 'role' => 'superadmin', 'status' => 'aktif'],
+    'user_nonaktif' => ['password' => password_hash('user123', PASSWORD_DEFAULT), 'role' => 'admin', 'status' => 'nonaktif']
+];
+
+$error = '';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
+    $username = htmlspecialchars($_POST['username']);
     $password = $_POST['password'];
 
-    $users = [
-        'admin' => ['password' => 'admin123', 'role' => 'admin'],
-        'superadmin' => ['password' => 'super123', 'role' => 'superadmin'],
-    ];
+    // Validasi username
+    if (isset($users[$username])) {
+        $user = $users[$username];
 
-    if (isset($users[$username]) && $users[$username]['password'] == $password) {
-        $_SESSION['user'] = $username;
-        $_SESSION['role'] = $users[$username]['role'];
+        // Cek password dan status aktif
+        if (password_verify($password, $user['password'])) {
+            if ($user['status'] == 'aktif') {
+                // Set sesi pengguna
+                $_SESSION['user'] = $username;
+                $_SESSION['role'] = $user['role'];
 
-        if ($_SESSION['role'] == 'admin') {
-            header('Location: admin/dashboard.php');
-            exit();
-        } elseif ($_SESSION['role'] == 'superadmin') {
-            header('Location: superadmin/dashboard.php');
-            exit();
+                // Arahkan berdasarkan peran (role)
+                if ($_SESSION['role'] == 'admin') {
+                    header('Location: admin/dashboard.php');
+                    exit();
+                } elseif ($_SESSION['role'] == 'superadmin') {
+                    header('Location: superadmin/dashboard.php');
+                    exit();
+                }
+            } else {
+                $error = "Akun Anda tidak aktif. Hubungi superadmin!";
+            }
+        } else {
+            $error = "Password salah!";
         }
     } else {
-        $error = "Username atau password salah!";
+        $error = "Username tidak ditemukan!";
     }
 }
 ?>
@@ -38,8 +56,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <h2>Form Login</h2>
+
+    <!-- Menampilkan pesan error jika ada -->
     <?php if (!empty($error)): ?>
-        <p><?php echo htmlspecialchars($error); ?></p>
+        <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
     <?php endif; ?>
 
     <form method="POST" action="">
