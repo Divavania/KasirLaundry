@@ -1,18 +1,36 @@
 <?php
 session_start();
 
-// Data user (contoh simulasi dari database)
+// Data user (simulasi dari database)
 $users = [
-    'admin' => ['password' => password_hash('admin123', PASSWORD_DEFAULT), 'role' => 'admin', 'status' => 'aktif'],
-    'superadmin' => ['password' => password_hash('super123', PASSWORD_DEFAULT), 'role' => 'superadmin', 'status' => 'aktif'],
-    'user_nonaktif' => ['password' => password_hash('user123', PASSWORD_DEFAULT), 'role' => 'admin', 'status' => 'nonaktif']
+    'admin' => [
+        'password' => password_hash('admin123', PASSWORD_DEFAULT),
+        'role' => 'admin',
+        'status' => 'aktif'
+    ],
+    'superadmin' => [
+        'password' => password_hash('super123', PASSWORD_DEFAULT),
+        'role' => 'superadmin',
+        'status' => 'aktif'
+    ],
+    'user_nonaktif' => [
+        'password' => password_hash('user123', PASSWORD_DEFAULT),
+        'role' => 'admin',
+        'status' => 'nonaktif'
+    ]
 ];
 
-$error = '';
-
+// Validasi form login
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = htmlspecialchars($_POST['username']);
+    $username = trim(htmlspecialchars($_POST['username']));
     $password = $_POST['password'];
+
+    // Validasi input tidak boleh kosong
+    if (empty($username) || empty($password)) {
+        $_SESSION['error'] = "Username dan password wajib diisi!";
+        header('Location: index.php');
+        exit();
+    }
 
     // Validasi username
     if (isset($users[$username])) {
@@ -34,14 +52,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     exit();
                 }
             } else {
-                $error = "Akun Anda tidak aktif. Hubungi superadmin!";
+                $_SESSION['error'] = "Akun Anda tidak aktif. Hubungi superadmin!";
             }
         } else {
-            $error = "Password salah!";
+            $_SESSION['error'] = "Password salah!";
         }
     } else {
-        $error = "Username tidak ditemukan!";
+        $_SESSION['error'] = "Username tidak ditemukan!";
     }
+    header('Location: index.php');
+    exit();
 }
 ?>
 
@@ -57,9 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <h2>Form Login</h2>
 
-    <!-- Menampilkan pesan error jika ada -->
-    <?php if (!empty($error)): ?>
-        <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
+    <!-- Menampilkan pesan error -->
+    <?php if (isset($_SESSION['error'])): ?>
+        <p style="color: red;"><?php echo htmlspecialchars($_SESSION['error']); ?></p>
+        <?php unset($_SESSION['error']); // Hapus pesan error setelah ditampilkan ?>
     <?php endif; ?>
 
     <form method="POST" action="">
